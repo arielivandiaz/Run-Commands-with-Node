@@ -4,7 +4,7 @@ const folder = 'the_new_folder';
 const file = 'example_file.txt'
 const step_1 = 'mkdir ' + folder;
 const step_2 = 'cd ' + folder;
-const step_3 = 'nano ' + file;
+const step_3 = 'touch ' + file;
 const step_4 = 'cp ' + file + ' ' + file + '.backup';
 
 run = (cmd) => {
