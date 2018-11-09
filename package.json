@@ -1,0 +1,13 @@
+{
+  "name": "simple-node-demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./server"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.3.2",
+    "express": "^4.13.0",
+    "morgan": "^1.6.0"
+  }
+}
