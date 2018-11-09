@@ -1,5 +1,5 @@
 
-const cmd = require('./delays');
+const cmd = require('./commands');
 
 const connections = [];
 
@@ -37,27 +37,41 @@ module.exports = function (app, io) {
 		var log = "";
 		io.sockets.emit('new message', { message: "Started" });
 
-		cmd.function_step_1().then((resolve) => {
+		run(cmd.step_1).then((resolve) => {
 
-			log = "First Step OK";
+			log = " Folder Created ";
 			console.log(log);
 			io.sockets.emit('new message', { message: log });
 
-			cmd.function_step_2().then((resolve) => {
+			run(cmd.step_2).then((resolve) => {
 
-				log = "Second Step OK";
+				log = "Inside new Folder";
 				console.log(log);
 				io.sockets.emit('new message', { message: log });
 
-				cmd.function_step_3().then((resolve) => {
+				run(cmd.step_3).then((resolve) => {
 
-					log = "Final Step OK";
+					log = "New File Created";
 					console.log(log);
 					io.sockets.emit('new message', { message: log });
 
+					run(cmd.step_4).then((resolve) => {
+
+						log = "Backup File Created";
+						console.log(log);
+						io.sockets.emit('new message', { message: log });
+	
+					}).catch(function (reject) {
+	
+						log = "Final Step FAIL";
+						console.log(log);
+						io.sockets.emit('new message', { message: log });
+	
+					});
+
 				}).catch(function (reject) {
 
-					log = "Final Step FAIL";
+					log = "Third Step FAIL";
 					console.log(log);
 					io.sockets.emit('new message', { message: log });
 
