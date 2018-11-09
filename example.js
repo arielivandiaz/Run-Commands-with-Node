@@ -2,7 +2,7 @@ const exec = require('child_process').exec;
 const cmd_1 = 'ls';
 const cmd_2 = 'cd asd';
 
-function echo(cmd) {
+function run(cmd) {
     return new Promise((resolve, reject) => {
         exec(cmd, (error, stdout, stderr) => {
             if (stderr) reject(stderr)       
@@ -15,7 +15,7 @@ function echo(cmd) {
 
 // Run async
 console.log("*** Run async ***");
-echo(cmd_1).then((res) => {
+run(cmd_1).then((res) => {
     console.log("stdout :\n", res);
 
 
@@ -23,7 +23,7 @@ echo(cmd_1).then((res) => {
     console.error('ERROR: ', rej);
 });
 
-echo(cmd_2).then((res) => { 
+run(cmd_2).then((res) => { 
     console.log("stdout :\n", res);
 
 
@@ -32,11 +32,11 @@ echo(cmd_2).then((res) => {
 });
 
 // Run sync
-echo(cmd_1).then((res) => { 
+run(cmd_1).then((res) => { 
     console.log("*** Run sync ***");
     console.log("stdout :\n", res);
 
-    echo(cmd_2).then((res) => { 
+    run(cmd_2).then((res) => { 
         console.log("stdout :\n", res);
     
     
