@@ -2,7 +2,6 @@
 // Requirements
 var express = require('express'); //Express main framework
 var morgan = require('morgan'); //Request logger
-var bodyParser = require('body-parser');
 
 
 var app = express(); 
@@ -15,11 +14,6 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.use(morgan('dev')); // Set morgan to log every request to the console
-
-app.use(bodyParser.urlencoded({
-	extended: true
-}));
-app.use(bodyParser.json());
 
 app.set('view engine', 'ejs'); // Set up ejs how templates motor
 
