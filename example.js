@@ -2,7 +2,7 @@ const exec = require('child_process').exec;
 const cmd_1 = 'ls';
 const cmd_2 = 'cd asd';
 
-function run(cmd) {
+ run = (cmd) => {
     return new Promise((resolve, reject) => {
         exec(cmd, (error, stdout, stderr) => {
             if (stderr) reject(stderr)       
